@@ -6,6 +6,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
@@ -55,9 +56,36 @@ public class HttpUtils {
         return json;
     }
 
-    public JSONObject doPost(String url,Map<String,String> map){
+    public static JSONObject doPost(String url,Map<String,String> map){
+        JSONObject json = new JSONObject();
+        HttpClient client = null;
+        HttpPost post = null;
+        try{
+            StringBuilder builder = new StringBuilder();
+            builder.append("?");
+            for(String key : map.keySet()){
+                builder.append(key).append("=").append(map.get(key)).append("&");
+            }
+            url += builder.toString();
+            client = new DefaultHttpClient();
+            post = new HttpPost(url);
 
-        return null;
+            HttpResponse result = client.execute(post);
+            if(result.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                HttpEntity entity = result.getEntity();
+                json = JSONObject.parseObject(EntityUtils.toString(entity, Charset.forName(DEFAULTENCODING)));
+                //释放io资源
+                EntityUtils.consume(entity);
+            }
+
+        }catch(Exception e){
+            System.out.println("[error]："+e);
+        }finally{
+            //释放资源
+            if(client != null)
+                client.getConnectionManager().closeExpiredConnections();
+        }
+        return json;
     }
 
 }
