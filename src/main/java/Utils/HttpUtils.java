@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * Created by Feng.Lou on 2016/10/10.
  * 介绍一些常用的http请求方式
+ * get\post
  */
 public class HttpUtils {
     private static String DEFAULTENCODING = "UTF-8";
