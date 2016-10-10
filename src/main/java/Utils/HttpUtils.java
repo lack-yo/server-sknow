@@ -55,4 +55,9 @@ public class HttpUtils {
         return json;
     }
 
+    public JSONObject doPost(String url,Map<String,String> map){
+
+        return null;
+    }
+
 }
