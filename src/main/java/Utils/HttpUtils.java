@@ -57,6 +57,13 @@ public class HttpUtils {
         return json;
     }
 
+    /**
+     * post 请求
+     * 与get编写方式类似
+     * @param url 访问地址
+     * @param map 请求参数
+     * @return
+     */
     public static JSONObject doPost(String url,Map<String,String> map){
         JSONObject json = new JSONObject();
         HttpClient client = null;

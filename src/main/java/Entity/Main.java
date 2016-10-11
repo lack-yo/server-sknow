@@ -1,12 +1,10 @@
 package Entity;
 
 
+
 import org.junit.Test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
 /**
  * Created by Administrator on 2016/10/5.
@@ -21,21 +19,23 @@ public class Main {
         //获取成员变量
         Field[] fs = c1.getDeclaredFields();
         for(Field f : fs){
+            System.out.println(Modifier.toString(f.getModifiers()));
             System.out.println(f.getName());
             System.out.println(f.getType());
-            System.out.println(f.getModifiers());
         }
+
         //执行方法
         Invoker i = (Invoker)c1.newInstance();
         Method[] ms = c1.getDeclaredMethods();
         for(Method m : ms){
             System.out.println("method:"+m.getName());
-            if("print".equals(m.getName()))
-            m.invoke(i,"x","y");
+            if("print".equals(m.getName())){
+                m.invoke(i,"x","y");
+            }
 
         }
 
-        //构造器
+        //构造器,无参构造器和有参构造器
         Constructor con = c1.getDeclaredConstructor();
         Invoker ii1 = (Invoker) con.newInstance();
         System.out.println("param:Num is "+ii1.getNum());
