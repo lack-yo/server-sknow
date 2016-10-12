@@ -37,6 +37,7 @@ public class Main {
 
         //构造器,无参构造器和有参构造器
         Constructor con = c1.getDeclaredConstructor();
+        //获取实例
         Invoker ii1 = (Invoker) con.newInstance();
         System.out.println("param:Num is "+ii1.getNum());
         Constructor con2 = c1.getDeclaredConstructor(new Class[]{String.class,int.class});
