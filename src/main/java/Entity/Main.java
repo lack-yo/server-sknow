@@ -5,6 +5,7 @@ package Entity;
 import org.junit.Test;
 
 import java.lang.reflect.*;
+import Enum.*;
 
 /**
  * Created by Administrator on 2016/10/5.
@@ -44,5 +45,9 @@ public class Main {
         Invoker ii = (Invoker) con2.newInstance(new Object[]{"a", 1});
         System.out.println("param:Num is "+ii.getNum());
 
+    }
+
+    public static void main(String[] args){
+        System.out.println(ITypeEnum.BORING.getDesc());
     }
 }
