@@ -9,6 +9,7 @@ import java.util.concurrent.*;
  * 线程池
  */
 public class Thread2 {
+    //创建固定大小的线程池
     private ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     @Test
@@ -22,7 +23,7 @@ public class Thread2 {
     }
 
     /**
-     * 有返回值的线程执行
+     * 有返回值的同步执行
      * @throws ExecutionException
      * @throws InterruptedException
      */
@@ -35,6 +36,7 @@ public class Thread2 {
             }
         });
         System.out.println(b.get());
+        pool.shutdown();
     }
 
 }

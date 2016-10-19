@@ -16,6 +16,12 @@ public class ReflectionEntity implements Serializable{
 
     }
 
+    public ReflectionEntity(String name, boolean isReal, int[] array) {
+        this.name = name;
+        this.isReal = isReal;
+        this.array = array;
+    }
+
     @Override
     public String toString() {
         return "ReflectionEntity{" +
