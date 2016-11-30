@@ -16,7 +16,7 @@ public class CountDownTest {
         new CountDownThread(countDownLatch, "A").start();
         new CountDownThread(countDownLatch, "B").start();
         new CountDownThread(countDownLatch, "C").start();
-        //new CountDownThread(countDownLatch, "D").start();
+        new CountDownThread(countDownLatch, "D").start();
         //new CountDownThread(countDownLatch, "E").start();
         //new CountDownThread(countDownLatch, "F").start();
 
