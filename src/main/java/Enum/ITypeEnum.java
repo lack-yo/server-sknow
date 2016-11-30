@@ -3,6 +3,7 @@ package Enum;
 /**
  * Created by Feng.Lou on 2016/10/19.
  * 类型枚举类
+ * 举例输出相应的描述
  */
 public enum ITypeEnum {
     FUN("有趣",1),BORING("无聊",2),SCARY("恐惧",3);

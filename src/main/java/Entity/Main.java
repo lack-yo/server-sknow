@@ -49,5 +49,6 @@ public class Main {
 
     public static void main(String[] args){
         System.out.println(ITypeEnum.BORING.getDesc());
+        System.out.println(ITypeEnum.SCARY.toString());
     }
 }
