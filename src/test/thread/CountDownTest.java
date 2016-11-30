@@ -8,6 +8,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * Created by Feng.Lou on 2016/11/30.
  * 测试信号量，同步阻塞
+ * http://www.codeceo.com/article/java-synchronizer.html
  */
 public class CountDownTest {
 
