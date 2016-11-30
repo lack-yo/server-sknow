@@ -7,12 +7,12 @@ import java.util.Arrays;
  * Created by Feng.Lou on 2016/10/10.
  * 反射demo
  */
-public class ReflectionEntity implements Serializable{
+public class ReflectionEntity implements Serializable {
     private String name;
     private boolean isReal;
     private int[] array;
 
-    public ReflectionEntity(){
+    public ReflectionEntity() {
 
     }
 

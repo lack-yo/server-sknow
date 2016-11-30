@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Administrator on 2016/10/5.
  */
-public class Invoker implements Serializable{
+public class Invoker implements Serializable {
     private String str;
     private int num;
 
@@ -33,7 +33,7 @@ public class Invoker implements Serializable{
         this.num = num;
     }
 
-    public void print(String a ,String b){
-        System.out.println("This is a:"+a+"!And this is b:"+b);
+    public void print(String a, String b) {
+        System.out.println("This is a:" + a + "!And this is b:" + b);
     }
 }

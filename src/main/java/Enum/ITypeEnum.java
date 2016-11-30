@@ -6,7 +6,7 @@ package Enum;
  * 举例输出相应的描述
  */
 public enum ITypeEnum {
-    FUN("有趣",1),BORING("无聊",2),SCARY("恐惧",3);
+    FUN("有趣", 1), BORING("无聊", 2), SCARY("恐惧", 3);
     private String desc;
     private int code;
 

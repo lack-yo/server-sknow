@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class TestJDK {
 
- @Test
-    public void testMap(){
-     ConcurrentHashMap synMap = new ConcurrentHashMap();
-     Object o = synMap.putIfAbsent("key",new Object());
- }
+    @Test
+    public void testMap() {
+        ConcurrentHashMap synMap = new ConcurrentHashMap();
+        Object o = synMap.putIfAbsent("key", new Object());
+    }
 
 
 }

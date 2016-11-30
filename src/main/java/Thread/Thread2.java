@@ -13,7 +13,7 @@ public class Thread2 {
     private ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     @Test
-    public void testPoolExecute(){
+    public void testPoolExecute() {
         pool.execute(new Runnable() {
             @Override
             public void run() {
@@ -24,6 +24,7 @@ public class Thread2 {
 
     /**
      * 有返回值的同步执行
+     *
      * @throws ExecutionException
      * @throws InterruptedException
      */
