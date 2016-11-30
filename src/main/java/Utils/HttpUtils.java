@@ -22,42 +22,6 @@ public class HttpUtils {
     private static String DEFAULTENCODING = "UTF-8";
 
     /**
-     * 该方法用来提供基本的get请求
-     * @param url 请求地址
-     * @param params 请求参数
-     * @return 返回参数以JSONObject形式
-     */
-    public static JSONObject doGet(String url , Map<String,String> params){
-        JSONObject json = new JSONObject();
-        HttpClient client = null;
-        HttpGet get = null;
-        try{
-            StringBuilder builder = new StringBuilder();
-            builder.append("?");
-            for(String key : params.keySet()){
-                builder.append(key).append("=").append(params.get(key)).append("&");
-            }
-            url += builder.toString();
-            get = new HttpGet(url);
-            client = new DefaultHttpClient();
-            HttpResponse response = client.execute(get);
-            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-                HttpEntity entity = response.getEntity();
-                json = JSONObject.parseObject(EntityUtils.toString(entity, Charset.forName(DEFAULTENCODING)));
-                //释放io资源
-                EntityUtils.consume(entity);
-            }
-        }catch(Exception e){
-            System.out.println("[error]:"+e);
-        }finally{
-            if(client != null)
-            //释放连接资源
-            client.getConnectionManager().closeExpiredConnections();
-        }
-        return json;
-    }
-
-    /**
      * post 请求
      * 与get编写方式类似
      * @param url 访问地址
@@ -92,6 +56,42 @@ public class HttpUtils {
             //释放资源
             if(client != null)
                 client.getConnectionManager().closeExpiredConnections();
+        }
+        return json;
+    }
+
+    /**
+     * 该方法用来提供基本的get请求
+     * @param url 请求地址
+     * @param params 请求参数
+     * @return 返回参数以JSONObject形式
+     */
+    public static JSONObject doGet(String url , Map<String,String> params){
+        JSONObject json = new JSONObject();
+        HttpClient client = null;
+        HttpGet get;
+        try{
+            StringBuilder builder = new StringBuilder();
+            builder.append("?");
+            for(String key : params.keySet()){
+                builder.append(key).append("=").append(params.get(key)).append("&");
+            }
+            url += builder.toString();
+            get = new HttpGet(url);
+            client = new DefaultHttpClient();
+            HttpResponse response = client.execute(get);
+            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                HttpEntity entity = response.getEntity();
+                json = JSONObject.parseObject(EntityUtils.toString(entity, Charset.forName(DEFAULTENCODING)));
+                //释放io资源
+                EntityUtils.consume(entity);
+            }
+        }catch(Exception e) {
+            System.out.println("[error]:" + e);
+        }finally{
+            if(client != null)
+            //释放连接资源
+            client.getConnectionManager().closeExpiredConnections();
         }
         return json;
     }

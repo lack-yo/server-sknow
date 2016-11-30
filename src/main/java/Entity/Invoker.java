@@ -1,9 +1,11 @@
 package Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/10/5.
  */
-public class Invoker {
+public class Invoker implements Serializable{
     private String str;
     private int num;
 

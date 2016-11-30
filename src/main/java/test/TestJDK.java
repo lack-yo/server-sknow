@@ -14,4 +14,6 @@ public class TestJDK {
      ConcurrentHashMap synMap = new ConcurrentHashMap();
      Object o = synMap.putIfAbsent("key",new Object());
  }
+
+
 }
