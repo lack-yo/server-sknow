@@ -23,8 +23,8 @@ public class CountDownThread extends Thread {
     public void run() {
         try {
             logger.debug("============执行，" + name);
-            countDownLatch.await();
-            sleep(1000);
+            countDownLatch.await();//阻塞
+            sleep(2000);
             logger.debug("============执行完毕，" + name);
         } catch (InterruptedException e) {
             e.printStackTrace();

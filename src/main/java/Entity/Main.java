@@ -5,6 +5,7 @@ import Enum.ITypeEnum;
 import org.junit.Test;
 
 import java.lang.reflect.*;
+import Enum.*;
 
 /**
  * Created by Administrator on 2016/10/5.

@@ -1,6 +1,7 @@
 package thread;
 
 import Thread.CountDownThread;
+import com.sun.media.jfxmedia.logging.Logger;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -13,16 +14,18 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownTest {
 
     public static void main(String[] args) {
-        CountDownLatch countDownLatch = new CountDownLatch(2);
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         new CountDownThread(countDownLatch, "A").start();
         new CountDownThread(countDownLatch, "B").start();
         new CountDownThread(countDownLatch, "C").start();
         new CountDownThread(countDownLatch, "D").start();
-        //new CountDownThread(countDownLatch, "E").start();
-        //new CountDownThread(countDownLatch, "F").start();
+        try{
+            System.out.println("主线程执行准备任务");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            countDownLatch.countDown();
+        }
 
-        //for (int i = 0; i < 2; i++) {
-        //    countDownLatch.countDown();
-        //}
     }
 }

@@ -1,5 +1,6 @@
 package Thread;
 
+
 import org.junit.Test;
 
 import java.util.concurrent.*;
@@ -10,11 +11,13 @@ import java.util.concurrent.*;
  */
 public class Thread2 {
     //创建固定大小的线程池
-    private ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private ExecutorService poolFixed = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private ExecutorService poolSingle = Executors.newSingleThreadExecutor();
+    private ExecutorService poolCache = Executors.newCachedThreadPool();
 
     @Test
     public void testPoolExecute() {
-        pool.execute(new Runnable() {
+        poolFixed.execute(new Runnable() {
             @Override
             public void run() {
 
@@ -30,14 +33,14 @@ public class Thread2 {
      */
     @Test
     public void testPoolSubmit() throws ExecutionException, InterruptedException {
-        Future b = pool.submit(new Callable<Boolean>() {
+        Future b = poolFixed.submit(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
                 return true;
             }
         });
         System.out.println(b.get());
-        pool.shutdown();
+        poolFixed.shutdown();
     }
 
 }
