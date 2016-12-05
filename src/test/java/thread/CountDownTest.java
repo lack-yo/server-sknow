@@ -1,7 +1,6 @@
 package thread;
 
 import Thread.CountDownThread;
-import com.sun.media.jfxmedia.logging.Logger;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -21,6 +20,7 @@ public class CountDownTest {
         new CountDownThread(countDownLatch, "D").start();
         try{
             System.out.println("主线程执行准备任务");
+            System.out.println("主线程执行完毕");
         }catch (Exception e){
             e.printStackTrace();
         }finally {
