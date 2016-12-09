@@ -20,7 +20,9 @@ public class CountDownTest {
         new CountDownThread(countDownLatch, "D").start();
         try{
             System.out.println("主线程执行准备任务");
+            Thread.sleep(1000);
             System.out.println("主线程执行完毕");
+            Thread.sleep(1000);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
