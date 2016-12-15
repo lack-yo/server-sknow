@@ -36,4 +36,8 @@ public class Invoker implements Serializable {
     public void print(String a, String b) {
         System.out.println("This is a:" + a + "!And this is b:" + b);
     }
+
+    public void print(){
+        System.out.println("aaa");
+    }
 }
