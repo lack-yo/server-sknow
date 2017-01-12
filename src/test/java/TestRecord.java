@@ -1,10 +1,11 @@
 import org.junit.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/26.
- *  记录一些日常使用
+ * 记录一些日常使用
  */
 public class TestRecord {
 
@@ -15,13 +16,13 @@ public class TestRecord {
      */
 
     @Test
-    public void testCollection(){
+    public void testCollection() {
 
         Map map = new HashMap<>();
 
-        map.put(new A(2,"fun",false),"A");
+        map.put(new A(2, "fun", false), "A");
 
-        A a = new A(2,"fun",false);
+        A a = new A(2, "fun", false);
 
         System.out.println(map.get(a));
 
@@ -29,12 +30,12 @@ public class TestRecord {
     }
 
 
-    private class A{
+    private class A {
         private int count;
         private String desc;
         private boolean real;
 
-        public A(){
+        public A() {
 
         }
 

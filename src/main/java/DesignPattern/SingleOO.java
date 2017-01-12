@@ -9,12 +9,12 @@ package DesignPattern;
 public class SingleOO {
     private SingleOO oo = null;
 
-    private SingleOO(){
+    private SingleOO() {
 
     }
 
-    public SingleOO getInstance(){
-        if(oo == null) {
+    public SingleOO getInstance() {
+        if (oo == null) {
             oo = new SingleOO();
         }
         return oo;

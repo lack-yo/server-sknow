@@ -26,7 +26,7 @@ public class Base64Utils {
 //    	 return Base64.decode(new String(base64.getBytes(),"UTF-8"));
         return Base64.decode(base64);
     }
-   
+
     /**
      * <p>
      * 二进制数据编码为BASE64字符串
@@ -37,9 +37,9 @@ public class Base64Utils {
      * @throws Exception
      */
     public static String encode(byte[] bytes) throws Exception {
-    	return new String(Base64.encode(bytes));
+        return new String(Base64.encode(bytes));
     }
-   
+
     /**
      * <p>
      * 将文件编码为BASE64字符串
@@ -56,21 +56,21 @@ public class Base64Utils {
         byte[] bytes = fileToByte(filePath);
         return encode(bytes);
     }
-   
+
     /**
      * <p>
      * BASE64字符串转回文件
      * </p>
      *
      * @param filePath 文件绝对路径
-     * @param base64 编码字符串
+     * @param base64   编码字符串
      * @throws Exception
      */
     public static void decodeToFile(String filePath, String base64) throws Exception {
         byte[] bytes = decode(base64);
         byteArrayToFile(bytes, filePath);
     }
-   
+
     /**
      * <p>
      * 文件转换为二进制数组
@@ -95,20 +95,20 @@ public class Base64Utils {
             out.close();
             in.close();
             data = out.toByteArray();
-         }
+        }
         return data;
     }
-   
+
     /**
      * <p>
      * 二进制数据写文件
      * </p>
      *
-     * @param bytes 二进制数据
+     * @param bytes    二进制数据
      * @param filePath 文件生成目录
      */
     public static void byteArrayToFile(byte[] bytes, String filePath) throws Exception {
-        InputStream in = new ByteArrayInputStream(bytes);  
+        InputStream in = new ByteArrayInputStream(bytes);
         File destFile = new File(filePath);
         if (!destFile.getParentFile().exists()) {
             destFile.getParentFile().mkdirs();
@@ -117,13 +117,13 @@ public class Base64Utils {
         OutputStream out = new FileOutputStream(destFile);
         byte[] cache = new byte[CACHE_SIZE];
         int nRead = 0;
-        while ((nRead = in.read(cache)) != -1) {  
+        while ((nRead = in.read(cache)) != -1) {
             out.write(cache, 0, nRead);
             out.flush();
         }
         out.close();
         in.close();
     }
-   
-   
+
+
 }

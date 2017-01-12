@@ -18,14 +18,14 @@ public class TestXmlRead {
     @Test
     public void testDom() throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder ();
+        DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new File("src/main/resource/value.xml"));
-        Element root =  doc.getDocumentElement();
+        Element root = doc.getDocumentElement();
         System.out.println(root.getNodeName());
 
         NodeList list = root.getChildNodes();
-        for(int i = 0;i<list.getLength();i++){
-            System.out.println("content:"+list.item(i).getTextContent());
+        for (int i = 0; i < list.getLength(); i++) {
+            System.out.println("content:" + list.item(i).getTextContent());
         }
     }
 }

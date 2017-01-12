@@ -18,7 +18,7 @@ public class TestJDK {
     }
 
     @Test
-    public void testLock(){
+    public void testLock() {
         String id = "test1";
         Object o1 = getLockObject(id);
         System.out.println(o1.toString());
@@ -27,11 +27,11 @@ public class TestJDK {
         System.out.println(o1 == o2);
     }
 
-    private synchronized Object getLockObject(String key){
+    private synchronized Object getLockObject(String key) {
         ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>();
-        if(map.contains(key)){
+        if (map.contains(key)) {
             return map.get(key);
-        }else{
+        } else {
             Object o = new Object();
             map.put(key, new Object());
             return o;

@@ -1,6 +1,9 @@
 import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by Feng.Lou on 2016/12/10.
@@ -40,7 +43,7 @@ public class IOTest {
     @Test
     public void testOutput() throws IOException {
         File f = new File("bb/cc/" + File.separator + "a.txt");
-        FileOutputStream fos = new FileOutputStream(f,true);
+        FileOutputStream fos = new FileOutputStream(f, true);
         String str = "\r\nsdfsmklfaeklj";
         fos.write(str.getBytes());
         fos.close();

@@ -18,14 +18,14 @@ public class CountDownTest {
         new CountDownThread(countDownLatch, "B").start();
         new CountDownThread(countDownLatch, "C").start();
         new CountDownThread(countDownLatch, "D").start();
-        try{
+        try {
             System.out.println("主线程执行准备任务");
             Thread.sleep(1000);
             System.out.println("主线程执行完毕");
             Thread.sleep(1000);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             countDownLatch.countDown();
         }
 

@@ -8,7 +8,7 @@ public class MyObject {
     public MyObject() {
     }
 
-    public void show(){
+    public void show() {
         System.out.println("show this!");
     }
 }

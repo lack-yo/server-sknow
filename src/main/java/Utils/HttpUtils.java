@@ -24,18 +24,19 @@ public class HttpUtils {
     /**
      * post 请求
      * 与get编写方式类似
+     *
      * @param url 访问地址
      * @param map 请求参数
      * @return
      */
-    public static JSONObject doPost(String url,Map<String,String> map){
+    public static JSONObject doPost(String url, Map<String, String> map) {
         JSONObject json = new JSONObject();
         HttpClient client = null;
         HttpPost post = null;
-        try{
+        try {
             StringBuilder builder = new StringBuilder();
             builder.append("?");
-            for(String key : map.keySet()){
+            for (String key : map.keySet()) {
                 builder.append(key).append("=").append(map.get(key)).append("&");
             }
             url += builder.toString();
@@ -43,18 +44,18 @@ public class HttpUtils {
             post = new HttpPost(url);
 
             HttpResponse result = client.execute(post);
-            if(result.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+            if (result.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity entity = result.getEntity();
                 json = JSONObject.parseObject(EntityUtils.toString(entity, Charset.forName(DEFAULTENCODING)));
                 //释放io资源
                 EntityUtils.consume(entity);
             }
 
-        }catch(Exception e){
-            System.out.println("[error]："+e);
-        }finally{
+        } catch (Exception e) {
+            System.out.println("[error]：" + e);
+        } finally {
             //释放资源
-            if(client != null)
+            if (client != null)
                 client.getConnectionManager().closeExpiredConnections();
         }
         return json;
@@ -62,36 +63,37 @@ public class HttpUtils {
 
     /**
      * 该方法用来提供基本的get请求
-     * @param url 请求地址
+     *
+     * @param url    请求地址
      * @param params 请求参数
      * @return 返回参数以JSONObject形式
      */
-    public static JSONObject doGet(String url , Map<String,String> params){
+    public static JSONObject doGet(String url, Map<String, String> params) {
         JSONObject json = new JSONObject();
         HttpClient client = null;
         HttpGet get;
-        try{
+        try {
             StringBuilder builder = new StringBuilder();
             builder.append("?");
-            for(String key : params.keySet()){
+            for (String key : params.keySet()) {
                 builder.append(key).append("=").append(params.get(key)).append("&");
             }
             url += builder.toString();
             get = new HttpGet(url);
             client = new DefaultHttpClient();
             HttpResponse response = client.execute(get);
-            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity entity = response.getEntity();
                 json = JSONObject.parseObject(EntityUtils.toString(entity, Charset.forName(DEFAULTENCODING)));
                 //释放io资源
                 EntityUtils.consume(entity);
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("[error]:" + e);
-        }finally{
-            if(client != null)
-            //释放连接资源
-            client.getConnectionManager().closeExpiredConnections();
+        } finally {
+            if (client != null)
+                //释放连接资源
+                client.getConnectionManager().closeExpiredConnections();
         }
         return json;
     }

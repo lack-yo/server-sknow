@@ -17,7 +17,7 @@ public class RSAUtils {
      * 加密算法RSA
      */
     public static final String KEY_ALGORITHM = "RSA";
-    
+
     /**
      * 签名算法
      */
@@ -27,38 +27,38 @@ public class RSAUtils {
      * 获取公钥的key
      */
     private static final String PUBLIC_KEY = "RSAPublicKey";
-    
+
     /**
      * 获取私钥的key
      */
     private static final String PRIVATE_KEY = "RSAPrivateKey";
-    
+
     /**
      * RSA最大加密明文大小
      */
     private static final int MAX_ENCRYPT_BLOCK = 117;
-    
+
     /**
      * RSA最大解密密文大小
      */
     private static final int MAX_DECRYPT_BLOCK = 128;
-    
-    
-	public static final String SIGN_ALGORITHMS = "SHA1WithRSA";
+
+
+    public static final String SIGN_ALGORITHMS = "SHA1WithRSA";
 
     /**
      * <p>
      * 生成密钥对(公钥和私钥)
      * </p>
-     * 
+     *
      * @return
      * @throws Exception
      */
     public static Map<String, Object> genKeyPair() throws Exception {
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
-        
+
         keyPairGen.initialize(1024);
-    
+
         KeyPair keyPair = keyPairGen.generateKeyPair();
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
@@ -67,15 +67,14 @@ public class RSAUtils {
         keyMap.put(PRIVATE_KEY, privateKey);
         return keyMap;
     }
-    
+
     /**
      * <p>
      * 用私钥对信息生成数字签名
      * </p>
-     * 
-     * @param data 已加密数据
+     *
+     * @param data       已加密数据
      * @param privateKey 私钥(BASE64编码)
-     * 
      * @return
      * @throws Exception
      */
@@ -94,14 +93,12 @@ public class RSAUtils {
      * <p>
      * 校验数字签名
      * </p>
-     * 
-     * @param data 已加密数据
+     *
+     * @param data      已加密数据
      * @param publicKey 公钥(BASE64编码)
-     * @param sign 数字签名
-     * 
+     * @param sign      数字签名
      * @return
      * @throws Exception
-     * 
      */
     public static boolean verify(byte[] data, String publicKey, String sign)
             throws Exception {
@@ -119,9 +116,9 @@ public class RSAUtils {
      * <P>
      * 私钥解密
      * </p>
-     * 
+     *
      * @param encryptedData 已加密数据
-     * @param privateKey 私钥(BASE64编码)
+     * @param privateKey    私钥(BASE64编码)
      * @return
      * @throws Exception
      */
@@ -158,9 +155,9 @@ public class RSAUtils {
      * <p>
      * 公钥解密
      * </p>
-     * 
+     *
      * @param encryptedData 已加密数据
-     * @param publicKey 公钥(BASE64编码)
+     * @param publicKey     公钥(BASE64编码)
      * @return
      * @throws Exception
      */
@@ -197,8 +194,8 @@ public class RSAUtils {
      * <p>
      * 公钥加密
      * </p>
-     * 
-     * @param data 源数据
+     *
+     * @param data      源数据
      * @param publicKey 公钥(BASE64编码)
      * @return
      * @throws Exception
@@ -237,8 +234,8 @@ public class RSAUtils {
      * <p>
      * 私钥加密
      * </p>
-     * 
-     * @param data 源数据
+     *
+     * @param data       源数据
      * @param privateKey 私钥(BASE64编码)
      * @return
      * @throws Exception
@@ -276,7 +273,7 @@ public class RSAUtils {
      * <p>
      * 获取私钥
      * </p>
-     * 
+     *
      * @param keyMap 密钥对
      * @return
      * @throws Exception
@@ -287,7 +284,7 @@ public class RSAUtils {
         return Base64Utils.encode(key.getEncoded());
     }
 
-    public static boolean doCheck(String content, String sign,String publicKey) {
+    public static boolean doCheck(String content, String sign, String publicKey) {
         try {
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             byte[] encodedKey = Base64Utils.decode(publicKey);
@@ -309,7 +306,7 @@ public class RSAUtils {
         return false;
     }
 
-    
+
     /**
      * <p>
      * 获取公钥
@@ -325,29 +322,29 @@ public class RSAUtils {
         return Base64Utils.encode(key.getEncoded());
     }
 
-	
-	public static String sign(String content, String privateKEY) {
-		String charset = "utf-8";
-		try {
-			PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64Utils.decode(privateKEY));
-			KeyFactory keyf = KeyFactory.getInstance("RSA");
-			PrivateKey priKey = keyf.generatePrivate(priPKCS8);
 
-			Signature signature = Signature.getInstance(SIGN_ALGORITHMS);
+    public static String sign(String content, String privateKEY) {
+        String charset = "utf-8";
+        try {
+            PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64Utils.decode(privateKEY));
+            KeyFactory keyf = KeyFactory.getInstance("RSA");
+            PrivateKey priKey = keyf.generatePrivate(priPKCS8);
 
-			signature.initSign(priKey);
-			signature.update(content.getBytes(charset));
+            Signature signature = Signature.getInstance(SIGN_ALGORITHMS);
 
-			byte[] signed = signature.sign();
+            signature.initSign(priKey);
+            signature.update(content.getBytes(charset));
 
-			return Base64Utils.encode(signed);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            byte[] signed = signature.sign();
+
+            return Base64Utils.encode(signed);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-		return null;
-	}
-    
+        return null;
+    }
+
 
 }
