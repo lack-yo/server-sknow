@@ -1,4 +1,4 @@
-package Entity;
+package reflect;
 
 import java.io.Serializable;
 import java.util.Arrays;

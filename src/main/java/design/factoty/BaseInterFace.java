@@ -1,4 +1,4 @@
-package DesignPattern.factoty;
+package design.factoty;
 
 /**
  * Created by Administrator on 2017/1/7.
