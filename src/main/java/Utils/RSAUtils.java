@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import javax.crypto.Cipher;
 import java.io.ByteArrayOutputStream;

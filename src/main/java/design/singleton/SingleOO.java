@@ -1,4 +1,4 @@
-package design;
+package design.singleton;
 
 /**
  * Created by Administrator on 2016/12/25.

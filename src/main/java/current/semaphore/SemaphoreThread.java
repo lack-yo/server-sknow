@@ -1,4 +1,4 @@
-package Thread;
+package current.semaphore;
 
 
 import org.slf4j.Logger;

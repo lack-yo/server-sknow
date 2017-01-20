@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import org.dom4j.*;
 import org.dom4j.io.OutputFormat;

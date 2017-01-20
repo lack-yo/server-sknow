@@ -1,4 +1,4 @@
-package Thread;
+package thread;
 
 /**
  * Created by Feng.Lou on 2016/10/18.
@@ -11,7 +11,7 @@ public class Thread1 {
         @Override
         public void run() {
             for (int i = 0; i < 20; i++)
-                System.out.println("this is Thread T1 [" + i + "] running");
+                System.out.println("this is thread T1 [" + i + "] running");
         }
     }
 
@@ -20,7 +20,7 @@ public class Thread1 {
         @Override
         public void run() {
             for (int i = 0; i < 20; i++)
-                System.out.println("this is Thread T2 [" + i + "] running");
+                System.out.println("this is thread T2 [" + i + "] running");
         }
     }
 

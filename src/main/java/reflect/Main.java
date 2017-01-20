@@ -1,7 +1,7 @@
 package reflect;
 
 
-import Enum.ITypeEnum;
+import enums.ITypeEnum;
 import org.junit.Test;
 
 import java.lang.reflect.*;
