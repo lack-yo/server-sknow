@@ -15,7 +15,7 @@ public class Main {
     private ReentrantLock lock = new ReentrantLock(true);
     private Condition isNotEmpty = lock.newCondition();
     private Condition isNotFull = lock.newCondition();
-    private Object[] items;
+    private Object[] items = new Object[10];
     private int index;
 
     public <T> void put(T t) throws InterruptedException {

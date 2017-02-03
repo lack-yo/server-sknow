@@ -13,7 +13,7 @@ public class Thread2 {
     private ExecutorService poolSingle = Executors.newSingleThreadExecutor();
     private ExecutorService poolCache = Executors.newCachedThreadPool();
 
-    public static void main(String args) throws ExecutionException, InterruptedException {
+    public static void main(String args) {
         poolFixed.execute(new Runnable() {
             @Override
             public void run() {
@@ -27,7 +27,13 @@ public class Thread2 {
                 return true;
             }
         });
-        System.out.println(b.get());
+        try {
+            System.out.println(b.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         poolFixed.shutdown();
 
 

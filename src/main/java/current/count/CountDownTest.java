@@ -11,12 +11,13 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownTest {
 
     public static void main(String[] args) {
-        CountDownLatch countDownLatch = new CountDownLatch(1);
+        CountDownLatch countDownLatch = new CountDownLatch(3);
         new CountDownThread(countDownLatch, "A").start();
         new CountDownThread(countDownLatch, "B").start();
         new CountDownThread(countDownLatch, "C").start();
-        new CountDownThread(countDownLatch, "D").start();
+        //new CountDownThread(countDownLatch, "D").start();
         try {
+            countDownLatch.await();//阻塞，等到减为0
             System.out.println("主线程执行准备任务");
             Thread.sleep(1000);
             System.out.println("主线程执行完毕");

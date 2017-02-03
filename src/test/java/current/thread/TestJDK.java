@@ -1,7 +1,6 @@
 package current.thread;
 
 import org.junit.Test;
-import org.junit.validator.ValidateWith;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -35,8 +34,9 @@ public class TestJDK {
     private synchronized Object getLockObject(String key) {
         Object o = new Object();
         Object value = map.putIfAbsent(key, o);
-        if(value == null) return o;
-
+        if (value == null) {
+            value = o;
+        }
         return value;
     }
 }

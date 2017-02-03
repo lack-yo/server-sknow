@@ -22,11 +22,10 @@ public class CountDownThread extends Thread {
     @Override
     public void run() {
         try {
-            logger.debug("============等待，" + name);
-            countDownLatch.await();//阻塞
             logger.debug("============执行，" + name);
             sleep(2000);
             logger.debug("============执行完毕，" + name);
+            countDownLatch.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
