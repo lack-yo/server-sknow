@@ -8,4 +8,10 @@ package design.proxy;
  */
 public class ProxyObject {
 
+    public static void main(String[] args) {
+        MyProxy proxy = new MyProxy();
+        MyAction o = (MyAction) proxy.getProxy(new MyObject());
+        o.show("this");
+    }
+
 }
