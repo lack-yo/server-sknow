@@ -33,6 +33,19 @@ public class TestJDK {
 
     private synchronized Object getLockObject(String key) {
         Object o = new Object();
+        /**
+         * If the specified key is not already associated
+         * with a value, associate it with the given value.
+         * This is equivalent to
+         * <pre>
+         *   if (!map.containsKey(key))
+         *       return map.put(key, value);
+         *   else
+         *       return map.get(key);
+         * </pre>
+         * except that the action is performed atomically.
+         *
+         **/
         Object value = map.putIfAbsent(key, o);
         if (value == null) {
             value = o;
