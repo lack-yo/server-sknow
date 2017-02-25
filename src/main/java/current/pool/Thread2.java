@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 
 /**
  * Created by Feng.Lou on 2016/10/18.
- * 线程池
+ * 线程池使用和创建
  */
 public class Thread2 {
     //创建固定大小的线程池
