@@ -25,7 +25,6 @@ public class CountDownTest {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            countDownLatch.countDown();
         }
 
     }
