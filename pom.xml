@@ -6,7 +6,7 @@
 
     <groupId>lou</groupId>
     <artifactId>server-sknow</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven-compiler-plugin.source>1.7</maven-compiler-plugin.source>
