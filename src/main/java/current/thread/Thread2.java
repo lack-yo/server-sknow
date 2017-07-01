@@ -1,4 +1,4 @@
-package current.pool;
+package current.thread;
 
 
 import java.util.concurrent.*;

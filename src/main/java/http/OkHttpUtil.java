@@ -1,20 +1,21 @@
+package http;
+
 import okhttp3.*;
-import org.junit.Test;
 
 import java.io.IOException;
 
 /**
  * @author loufeng
- * @date 2017/5/20 下午10:20.
- * 听说超好用的http三方包
+ * @date 2017/7/1 下午9:44.
+ * okHttp 官方示例
  */
-public class OKHttpTest {
+public class OkHttpUtil {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
-    OkHttpClient client = new OkHttpClient();
+    private static OkHttpClient client = new OkHttpClient();
 
-    String post(String url, String json) throws IOException {
+    public static String post(String url, String json) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
@@ -24,7 +25,7 @@ public class OKHttpTest {
         return response.body().string();
     }
 
-    String get(String url) throws IOException {
+    public static String get(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
@@ -32,11 +33,4 @@ public class OKHttpTest {
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
-
-    @Test
-    public void test() throws IOException {
-        String result = get("http://wx.souche.com/api/wechathousekeeperapi/getAuthUrl.json");
-        System.out.println(result);
-    }
-
 }
