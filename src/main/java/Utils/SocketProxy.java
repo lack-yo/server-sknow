@@ -26,6 +26,7 @@ public class SocketProxy {
 
         try {
             //客户端输出流
+            assert socket != null;
             PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
             //服务端返回流
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));

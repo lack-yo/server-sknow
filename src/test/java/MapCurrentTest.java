@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 在这个测试中map容器在多个线程并发访问下，可能会出现链表成环而陷入死循环
  */
 public class MapCurrentTest implements Runnable{
     static Map map = new HashMap<>();
