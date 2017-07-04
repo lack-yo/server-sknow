@@ -37,7 +37,7 @@ public class Base64Utils {
      * @throws Exception
      */
     public static String encode(byte[] bytes) throws Exception {
-        return new String(Base64.encode(bytes));
+        return Base64.encode(bytes);
     }
 
     /**

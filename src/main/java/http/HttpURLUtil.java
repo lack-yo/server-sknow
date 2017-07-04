@@ -19,6 +19,7 @@ import java.util.Set;
 /**
  * @author loufeng
  * @date 2017/7/1 下午9:33.
+ * 创建信任SSL协议的connection
  */
 public class HttpURLUtil {
     private static Logger logger = LoggerFactory.getLogger(HttpURLUtil.class);
