@@ -1,9 +1,7 @@
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 
 /**
  * Created by Feng.Lou on 2016/12/10.
@@ -47,6 +45,21 @@ public class IOTest {
         String str = "\r\nsdfsmklfaeklj";
         fos.write(str.getBytes());
         fos.close();
+    }
+
+    @Test
+    public void testURL(){
+        try {
+            URL my_url = new URL("http://loufeng.tech/");
+            System.out.println(my_url.getPort());
+            BufferedReader br = new BufferedReader(new InputStreamReader(my_url.openStream()));
+            String strTemp = "";
+            while(null != (strTemp = br.readLine())){
+                System.out.println(strTemp);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
